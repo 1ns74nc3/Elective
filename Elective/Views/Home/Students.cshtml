@@ -5,12 +5,20 @@
 
 <h2>Students</h2>
 <table>
-    @foreach (var item in Model)
-    {
+    <tbody>
+        <tr>
+            <td>First name</td>
+            <td>Last name</td>
+        </tr>
+        @foreach (var item in Model)
+        {
         <tr>
             <td>@item.Firstname</td>
             <td>@item.Lastname</td>
+            <td>@Html.ActionLink("Edit", "Edit", new { id = item.Id })</td>
+            <td>@Html.ActionLink("Detail", "Detail", new { id = item.Id }) </td>
         </tr>
-    }
+        }
+    </tbody>
 </table>
 

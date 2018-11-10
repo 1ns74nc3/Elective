@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Elective.Models.Subject>
+@{
+    ViewBag.Title = "Subjects";
+}
+<style>
+    td{
+        margin-right:10px;
+    }
+</style>
+<h2>Subjects</h2>
+<table>
+    <tbody>
+        <tr>
+            <td>Course</td>
+            <td>Sphere</td>
+            <td>Instructor First Name</td>
+            <td>Instructor Last Name</td>
+            <td>Course status</td>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Subject_name</td>
+                <td>@item.Topic</td>
+                <td>@item.Instructor.Firstname</td>
+                <td>@item.Instructor.Lastname</td>
+                <td>@item.Course_status</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
