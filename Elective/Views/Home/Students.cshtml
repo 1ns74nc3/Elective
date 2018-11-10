@@ -1,0 +1,16 @@
+﻿@model IEnumerable<Elective.Models.Student>
+@{
+    ViewBag.Title = "Students";
+}
+
+<h2>Students</h2>
+<table>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Firstname</td>
+            <td>@item.Lastname</td>
+        </tr>
+    }
+</table>
+
