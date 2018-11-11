@@ -11,5 +11,9 @@ namespace Elective.Models
         {
 
         }
+        public Student() : base()
+        {
+
+        }
     }
 }

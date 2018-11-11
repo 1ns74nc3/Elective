@@ -13,6 +13,11 @@ namespace Elective.Models
         public string Lastname { get; set; }
         private List<string> Courses = new List<string>();
 
+        public Account()
+        {
+
+        }
+
         public Account(byte id, string firstname, string lastname)
         {
             Id = id;
