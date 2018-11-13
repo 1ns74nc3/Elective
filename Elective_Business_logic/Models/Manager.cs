@@ -10,5 +10,6 @@ namespace Elective_Business_logic.Models
     {
         public abstract List<T> Get_Data();
         public abstract void Add_Item(T item);
+        public abstract void Delete_Item(T item);
     }
 }

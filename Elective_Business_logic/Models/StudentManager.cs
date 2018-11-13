@@ -18,6 +18,11 @@ namespace Elective_Business_logic.Models
             }
         }
 
+        public override void Delete_Item(Student item)
+        {
+            throw new NotImplementedException();
+        }
+
         public override List<Student> Get_Data()
         {
             List<Student> answer = new List<Student>();

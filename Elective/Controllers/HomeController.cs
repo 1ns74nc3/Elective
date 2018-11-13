@@ -22,6 +22,14 @@ namespace Elective.Controllers
             return View(students);
         }
 
+        [HttpPost]
+        public ActionResult Students()
+        {
+            StudentManager students_manager = new StudentManager();
+            List<Student> students = students_manager.Get_Data();
+            return View(students);
+        }
+
         public ActionResult Instructors()
         {
             InstructorManager instructors_manager = new InstructorManager();
