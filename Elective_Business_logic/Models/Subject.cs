@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Elective_Business_logic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -17,7 +18,8 @@ namespace Elective.Models
         public Status Course_status { get; set; }
         public byte Id { get; set; }
         public string Subject_name { get; set; }
-        public Instructor Instructor { get; set; }
+        public string Instructor_Firstname { get; set; }
+        public string Instructor_Lastname{ get; set; }
         public string Topic { get; set; }
         private List<Student> Students = new List<Student>();
 
@@ -26,14 +28,22 @@ namespace Elective.Models
             Students.Add(student);
         }
 
-        public Subject(byte id, string course_name, Instructor instructor, string topic, Status status)
+        public Subject(byte id, string course_name, string instructor_firstname, string instructor_lastname, string topic, Status status)
         {
             Id = id;
             Subject_name = course_name;
-            Instructor = instructor;
+            Instructor_Firstname = instructor_firstname;
+            Instructor_Lastname = instructor_lastname;
             Topic = topic;
             Course_status = status;
         }
+
+        public Subject()
+        {
+
+        }
+
+        
 
     }
 }

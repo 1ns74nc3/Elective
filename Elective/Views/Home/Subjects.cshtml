@@ -8,25 +8,27 @@
     }
 </style>
 <h2>Subjects</h2>
-<table>
-    <tbody>
+<table class="table table-hover">
+    <thead>
         <tr>
-            <td>Course</td>
-            <td>Sphere</td>
-            <td>Instructor First Name</td>
-            <td>Instructor Last Name</td>
-            <td>Course status</td>
+            <th scope="col">Course</th>
+            <th scope="col">Sphere</th>
+            <th scope="col">Instructor First Name</th>
+            <th scope="col">Instructor Last Name</th>
+            <th scope="col">Course status</th>
         </tr>
+    </thead>
+    <tbody>
         @foreach (var item in Model)
         {
             <tr>
                 <td>@item.Subject_name</td>
                 <td>@item.Topic</td>
-                <td>@item.Instructor.Firstname</td>
-                <td>@item.Instructor.Lastname</td>
+                <td>@item.Instructor_Firstname</td>
+                <td>@item.Instructor_Lastname</td>
                 <td>@item.Course_status</td>
             </tr>
         }
-    </tbody>
+        </tbody>
 </table>
 

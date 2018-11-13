@@ -8,9 +8,7 @@ namespace Elective.Controllers
 {
     public class HomeController : Controller
     {
-        List<Student> students = new List<Student>();
-        List<Instructor> instructors = new List<Instructor>();
-        List<Subject> subjects = new List<Subject>();
+        
         public ActionResult Index()
         {
             return View();
@@ -18,41 +16,19 @@ namespace Elective.Controllers
 
         public ActionResult Students()
         {
-            using (StudentContext db = new StudentContext())
-            {
-                //db.Students.Add(new Student(1, "Igor", "Grohotsky"));
-                //db.Students.Add(new Student(2, "Dmitriy", "Vodolazhskiy"));
-                //db.Students.Add(new Student(3, "Alexander", "Chekmarev"));
-                //db.SaveChanges();
-                students.Clear();
-                foreach(Student item in db.Students)
-                {
-                    students.Add(item);
-                }
-            }
+            List<Student> students = Student.Get_Student_Data();
             return View(students);
         }
 
         public ActionResult Instructors()
         {
-            using (InstructorContext db = new InstructorContext())
-            {
-                //db.Instructors.Add(new Instructor(1, "Valeriy", "Golishev"));
-                //db.Instructors.Add(new Instructor(2, "Igor", "Vasilyev"));
-                //db.SaveChanges();
-                instructors.Clear();
-                foreach (Instructor item in db.Instructors)
-                {
-                    instructors.Add(item);
-                }
-            }
+            List<Instructor> instructors = Instructor.Get_Instructor_Data();
             return View(instructors);
         }
 
         public ActionResult Subjects()
         {
-            subjects.Add(new Subject(1, "ASP.NET", new Instructor(1, "Alex", "Bazhenov"), "Programming", Subject.Status.started));
-            subjects.Add(new Subject(2, "Java", new Instructor(2, "Oleg", "Hromov"), "Programming", Subject.Status.processing));
+            List<Subject> subjects = Subject.Get_Subject_Data();
             return View(subjects);
         }
 
@@ -62,16 +38,12 @@ namespace Elective.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }                
-            
-            using (StudentContext db = new StudentContext())
+            Student student = Student.Get_Student_Data().SingleOrDefault(e => e.Id == id);
+            if (student == null)
             {
-                Student student = db.Students.SingleOrDefault(e => e.Id == id);
-                if (student == null)
-                {
-                    return HttpNotFound();
-                }
-                return View(student);
-            }
+                return HttpNotFound();
+            } 
+            return View(student);
         }
     }
 }
