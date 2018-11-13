@@ -42,8 +42,5 @@ namespace Elective.Models
         {
 
         }
-
-        
-
     }
 }
