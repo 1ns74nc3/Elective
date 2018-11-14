@@ -23,9 +23,11 @@ namespace Elective.Controllers
         }
 
         [HttpPost]
-        public ActionResult Students()
+        public ActionResult Students(string firstname, string lastname)
         {
             StudentManager students_manager = new StudentManager();
+            Student student = new Student(firstname, lastname);
+            students_manager.Add_Item(student);
             List<Student> students = students_manager.Get_Data();
             return View(students);
         }
@@ -42,6 +44,13 @@ namespace Elective.Controllers
             SubjectManager subjects_manager = new SubjectManager();
             List<Subject> subjects = subjects_manager.Get_Data();
             return View(subjects);
+        }
+
+        public ActionResult Delete(int id, string action)
+        {
+            StudentManager students_manager = new StudentManager();
+            students_manager.Delete_Item(id);
+            return RedirectToAction(action);
         }
 
         public ActionResult Detail(int? id)

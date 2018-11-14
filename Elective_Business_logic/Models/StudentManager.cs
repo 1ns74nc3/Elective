@@ -13,14 +13,20 @@ namespace Elective_Business_logic.Models
         {
             using (ElectiveContext db = new ElectiveContext())
             {
+                var id = db.Students.Max(p => p.Id);
+                item.Id = ++id;
                 db.Students.Add(item);
                 db.SaveChanges();
             }
         }
 
-        public override void Delete_Item(Student item)
+        public override void Delete_Item(int item)
         {
-            throw new NotImplementedException();
+            using (ElectiveContext db = new ElectiveContext())
+            {
+                db.Students.Remove(db.Students.FirstOrDefault(e => e.Id == item));
+                db.SaveChanges();
+            }
         }
 
         public override List<Student> Get_Data()
@@ -28,9 +34,6 @@ namespace Elective_Business_logic.Models
             List<Student> answer = new List<Student>();
             using (ElectiveContext db = new ElectiveContext())
             {
-                //db.Subjects.Add(new Subject(1, "ASP.NET", "Alex", "Bazhenov", "Programming", Subject.Status.started));
-                //db.Subjects.Add(new Subject(2, "Java", "Oleg", "Hromov", "Programming", Subject.Status.processing));
-                //db.SaveChanges();
                 foreach (Student item in db.Students)
                 {
                     answer.Add(item);

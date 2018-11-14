@@ -16,7 +16,7 @@ namespace Elective.Models
             finished = 3
         }
         public Status Course_status { get; set; }
-        public byte Id { get; set; }
+        public int Id { get; set; }
         public string Subject_name { get; set; }
         public string Instructor_Firstname { get; set; }
         public string Instructor_Lastname{ get; set; }
@@ -28,7 +28,7 @@ namespace Elective.Models
             Students.Add(student);
         }
 
-        public Subject(byte id, string course_name, string instructor_firstname, string instructor_lastname, string topic, Status status)
+        public Subject(int id, string course_name, string instructor_firstname, string instructor_lastname, string topic, Status status)
         {
             Id = id;
             Subject_name = course_name;

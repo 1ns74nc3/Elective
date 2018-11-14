@@ -8,7 +8,11 @@ namespace Elective.Models
 {
     public class Student : Account
     {
-        public Student(byte id, string firstname, string lastname) : base(id, firstname, lastname)
+        public Student(int id, string firstname, string lastname) : base(id, firstname, lastname)
+        {
+
+        }
+        public Student(string firstname, string lastname) : base(firstname, lastname)
         {
 
         }

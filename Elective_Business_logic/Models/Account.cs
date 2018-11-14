@@ -8,7 +8,7 @@ namespace Elective.Models
     //main class with common information
     public abstract class Account
     {
-        public byte Id { get; set; }
+        public int Id { get; set; }
         public string Firstname { get; set; }
         public string Lastname { get; set; }
         private List<string> Courses = new List<string>();
@@ -18,7 +18,13 @@ namespace Elective.Models
 
         }
 
-        public Account(byte id, string firstname, string lastname)
+        public Account(string firstname, string lastname)
+        {
+            Firstname = firstname;
+            Lastname = lastname;
+        }
+
+        public Account(int id, string firstname, string lastname)
         {
             Id = id;
             Firstname = firstname;

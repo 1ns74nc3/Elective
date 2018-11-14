@@ -18,9 +18,13 @@ namespace Elective_Business_logic.Models
             }
         }
 
-        public override void Delete_Item(Instructor item)
+        public override void Delete_Item(int item)
         {
-            throw new NotImplementedException();
+            using (ElectiveContext db = new ElectiveContext())
+            {
+                //db.Instructors.Remove(item);
+                //db.SaveChanges();
+            }
         }
 
         public override List<Instructor> Get_Data()
@@ -28,9 +32,6 @@ namespace Elective_Business_logic.Models
             List<Instructor> answer = new List<Instructor>();
             using (ElectiveContext db = new ElectiveContext())
             {
-                //db.Subjects.Add(new Subject(1, "ASP.NET", "Alex", "Bazhenov", "Programming", Subject.Status.started));
-                //db.Subjects.Add(new Subject(2, "Java", "Oleg", "Hromov", "Programming", Subject.Status.processing));
-                //db.SaveChanges();
                 foreach (Instructor item in db.Instructors)
                 {
                     answer.Add(item);

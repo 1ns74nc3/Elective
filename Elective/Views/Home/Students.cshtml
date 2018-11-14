@@ -7,6 +7,7 @@
 <table class="table table-hover">
     <thead>
         <tr>
+            <th>Id</th>
             <th>First name</th>
             <th>Last name</th>
             <th></th>
@@ -17,12 +18,21 @@
         @foreach (var item in Model)
         {
             <tr>
+                <td>@item.Id</td>
                 <td>@item.Firstname</td>
                 <td>@item.Lastname</td>
                 <td>@Html.ActionLink("Edit", "Edit", new { id = item.Id })</td>
                 <td>@Html.ActionLink("Detail", "Detail", new { id = item.Id }) </td>
+                <td>@Html.ActionLink("Delete", "Delete", new { id = item.Id, action = "Students" }) </td>
             </tr>
         }
     </tbody>
 </table>
+<form action="Students" method="POST">
+    <label for="firstname">Your first name</label>
+    <input type="text" name="firstname" placeholder="Your name goes here" />
+    <label for="lastname">Your first name</label>
+    <input type="text" name="lastname" placeholder="Your last name goes here" />
+    <input type="submit" />
+</form>
 
